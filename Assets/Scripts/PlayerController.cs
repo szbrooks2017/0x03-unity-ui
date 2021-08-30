@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator LoadScene(float seconds)
     {
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("maze");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     void SetScoreText()
     {
