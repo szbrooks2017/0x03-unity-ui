@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
             WinLoseText.text = "Game Over!";
             WinLoseText.color = Color.white;
             WinLoseBG.color = Color.red;
-            SceneManager.LoadScene("maze");
+            StartCoroutine(LoadScene(3));
         }
     }
      void FixedUpdate()
@@ -49,6 +49,11 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(0, 0, -speed * Time.deltaTime);
         }
+    }
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("maze");
     }
     void SetScoreText()
     {
@@ -81,6 +86,7 @@ public class PlayerController : MonoBehaviour
             WinLoseText.text = "Game Over!";
             WinLoseText.color = Color.black;
             WinLoseBG.color = Color.green;
+            StartCoroutine(LoadScene(3));
         }
     }
 }
