@@ -6,8 +6,15 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-public void PlayMaze()
-{
-    SceneManager.LoadScene("maze");
-}
+
+    public void PlayMaze()
+    {
+        SceneManager.LoadScene("maze");
+    }
+
+    public void QuitMaze()
+    {
+        Application.Quit();
+        Debug.Log("Quit Game");
+    }
 }
