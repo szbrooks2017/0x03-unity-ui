@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 1000;
     private int score = 0;
     public int health = 5;
+    public Text scoreText;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,12 +42,17 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(0, 0, -speed * Time.deltaTime);
         }
     }
+    void SetScoreText()
+    {
+        scoreText.text = "Score: " + score;
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Pickup"))
         {
             score++;
-            Debug.Log($"Score: {score}");
+            SetScoreText();
+            //Debug.Log($"Score: {score}");
             Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("Trap"))
